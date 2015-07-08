@@ -8,7 +8,7 @@
     "dist/inherit.js"
   ],
   "dependencies": {
-  	"polyvitamins~mixin": "master"
+  	"polyvitamins/mixin": "master"
   },
   "scripts": [
     "src/inherit.js"
