@@ -4,9 +4,7 @@
   "description": "Inherit class by class",
   "version": "0.0.1",
   "keywords": ["inherit"],
-  "main": [
-    "dist/inherit.js"
-  ],
+  "main": "dist/inherit.js",
   "dependencies": {
   	"polyvitamins/mixin": "master"
   },
