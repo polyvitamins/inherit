@@ -11,8 +11,18 @@ define(['polyvitamins~mixin@master'], function(mixin) {
 		var cl=classes.length;
 		
 		var superconstructor = function(){
-			var args = Array.prototype.slice.apply(arguments);
-			if (arguments.length>1) console.log('eval widget', args[1].debug);
+			 var args = Array.prototype.slice.apply(arguments);
+            /*
+			Поскольку в процессе построения экземпляра будут выполняться функции конструкторы всех наследуемых
+			классов, нам необходимо запоминать тех, которые уже были вызваны, во избежании повторного вызова.
+			*/
+			if ("object"!==typeof this.constructors) Object.defineProperty(this, 'constructors', {
+                configurable: false,
+                enumerable: false,
+                writable: false,
+                value: []
+            });
+               
 			for (var i=0;i<cl;++i) {
 
 				/*
@@ -24,8 +34,8 @@ define(['polyvitamins~mixin@master'], function(mixin) {
 				*/
 
 
-				if (this.__proto__.constructors.indexOf(classes[i])>=0) continue;
-				this.__proto__.constructors.push(classes[i]);
+				if (this.constructors.indexOf(classes[i])>=0) continue;
+				this.constructors.push(classes[i]);
 
 				classes[i].apply(this, args);
 			}
@@ -85,16 +95,7 @@ define(['polyvitamins~mixin@master'], function(mixin) {
 			aClass.apply(this, args);
 		}
 		Mixin.prototype = Object.create(superprototype,{
-			/*
-			Поскольку в процессе построения экземпляра будут выполняться функции конструкторы всех наследуемых
-			классов, нам необходимо запоминать тех, которые уже были вызваны, во избежании повторного вызова.
-			*/
-			constructors: {
-				configurable: false,
-				enumerable: false,
-				writable: false,
-				value: []
-			},
+			
 			/*
 			Для быстрого кроссбраузерного доступа к суперпроототипу будет использоваться свойство __super__
 			*/
