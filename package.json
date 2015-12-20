@@ -1,0 +1,22 @@
+{
+  "name": "inherit",
+  "version": "1.0.0",
+  "description": "Class multyinherit",
+  "main": "src/inherit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polyvitamins/inherit.git"
+  },
+  "keywords": [
+    "inherit"
+  ],
+  "author": "Vladimir Kalmykov <vladimirmorulus@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/polyvitamins/inherit/issues"
+  },
+  "homepage": "https://github.com/polyvitamins/inherit#readme"
+}

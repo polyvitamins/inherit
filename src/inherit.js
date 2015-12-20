@@ -1,11 +1,10 @@
-/* Протестировано */
-define(['polyvitamins~mixin@master'], function(mixin) {
-	
+var mixin = require("mixin");
+
 	/*
 	Функция наследования одним классом другого. Расширяет прототип и конструктор. 
 	Не требует ручного вызова конструктора родительских классов.
 	*/
-	return function(aClass, classes) {
+	module.exports = function(aClass, classes) {
 
 		if (!(classes instanceof Array)) classes = [classes];
 		var cl=classes.length;
@@ -69,6 +68,7 @@ define(['polyvitamins~mixin@master'], function(mixin) {
 		нам придется подменить орегинальную функцию на собственную. 
 		*/
 		var Mixin = function() {
+
 			/*
 			Если в прототипе класса вдруг возникла переменная __disableContructor__, значит кто то 
 			не хочет, что бы при создании экземпляра класса происходил вызов конструкторов.
@@ -76,12 +76,10 @@ define(['polyvitamins~mixin@master'], function(mixin) {
 			контруктора через функцию Apply.
 			*/
 			if (this.constructor && this.constructor.__disableContructor__) {
-				console.log('ESCAPE CONSTRUCTOR');
 				this.constructor.__disableContructor__ = false;
-
 				return false;
 			}
-			
+
 			var args = Array.prototype.slice.apply(arguments);
 
 			/*
@@ -134,4 +132,3 @@ define(['polyvitamins~mixin@master'], function(mixin) {
 
 		return Mixin;
 	}
-});
