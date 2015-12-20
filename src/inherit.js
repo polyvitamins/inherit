@@ -86,7 +86,7 @@ var mixin = require("mixin");
 			Мы выполняем расширенные функции только если мы являемся экземпляром Mixin
 			*/			
 			
-			if (! (window&&(this===window)||global&&(this===global) )) {
+			if (! ("object"==typeof window&&(this===window)||"object"==typeof global&&(this===global) )) {
 				superconstructor.apply(this, args)
 			}
 
