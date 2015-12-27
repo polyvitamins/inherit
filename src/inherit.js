@@ -92,7 +92,7 @@ var mixin = require("mixin");
 
 			aClass.apply(this, args);
 		}
-		Mixin.prototype = Object.create(superprototype,{
+		Mixin.prototype = Object.create(superprototype, {
 			
 			/*
 			Для быстрого кроссбраузерного доступа к суперпроототипу будет использоваться свойство __super__
