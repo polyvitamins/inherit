@@ -40,3 +40,30 @@ describe('Inheritance with prototypes', function() {
 		assert.equal((new ab()).test, 'b');
 	});
 });
+
+/*
+Test for contamination of one of the prototypes
+*/
+describe('The prototype of one of classes for inherit must not be mixed by another', function() {
+	var a = function() {
+
+	}
+	a.prototype = {
+		constructor: a,
+		a: function() {}
+	}
+
+	var b = function() {
+
+	}
+	b.prototype = {
+		constructor: b,
+		b: function() {}
+	}
+
+	var something = inherit(function() { }, [a, b]);
+	it ('a must have no b function in prototype', function(){
+		assert.ok("function"!==typeof a.prototype.b);
+		assert.ok("function"!==typeof (new a()).b);
+	});
+});
