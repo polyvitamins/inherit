@@ -1,5 +1,5 @@
 var assert = require('should');
-var inherit = require('./../'+require('./../package.json').main);
+var inherit = require('./../es5.js');
 
 
 /*
